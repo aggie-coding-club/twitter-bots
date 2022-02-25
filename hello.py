@@ -1,0 +1,2 @@
+msg = "vibing"
+print(msg)
