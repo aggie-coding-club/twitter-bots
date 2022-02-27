@@ -5,9 +5,9 @@ Mama we made it
 I got bored so I googled code
 
 <dl>
-  <dt>First Term</dt>
-  <dd>This is the definition of the first term.</dd>
-  <dt>Second Term</dt>
-  <dd>This is one definition of the second term. </dd>
-  <dd>This is another definition of the second term.</dd>
+  <dt>Programming</dt>
+  <dd>The makings of pro gramming</dd>
+  <dt>Pro gaming</dt>
+  <dd>The makings of pro gamers </dd>
+  <dd>Best Gamers</dd>
 </dl>
