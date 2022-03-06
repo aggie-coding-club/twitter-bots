@@ -1,0 +1,28 @@
+{
+	"origin": ["I don't know what I'm doing",
+ 		"I like #like# so muuuuuuch", 
+		"I really hate #hate#"],
+	
+	"like" : ["food", "milkshake", 
+		"CATS", "cooking", 
+		"playing league", "chocolate"],
+
+	"hate" : ["looking at my exam grade", 
+		"canvas", 
+		"when people don't like #like#"],
+	
+	"face":[":D",
+		">:(",
+		";)",
+		";D",
+		"0-0",
+		":0"],
+		
+	
+	"greetings": ["Howdy!", 
+	"Bye---",
+	"See ya",
+	"Same",
+	"Me too",
+	"Hi ;D"]
+}
