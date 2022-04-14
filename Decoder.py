@@ -1,28 +1,37 @@
 def get_key(input):
     keys = {}
-    start = input.find("[['") + 3;
+    start = input.find("[") + 1;
     if(start == -1):
-        raise Exception("could not find [['")
-    end = input.find("']]")
+        raise Exception("could not find [")
+    end = input.rfind("]")
     if(end == -1):
-        raise Exception("could not find ']]")
+        raise Exception("could not find ]")
     ary = input[start:end];
     i = 0
     while(i < len(ary)):
-        key_start = i + 5
-        j = key_start;
-        code = "";
-        while(j < len(ary) and ary[j] != "'"):
-            code += ary[j];
+        character = ary[i]
+        start = i + 1
+        j = i+2
+        while(j < len(ary) and ary[j] != ","):
             j += 1
-        keys[code] = ary[i]
-        i = j + 6;
-    
+        if(j >= len(ary)):
+            raise Exception("invalid key")
+        end = j
+        binary = ary[start:end]
+        keys[binary] = character;
+        i = end+1
+        
     return keys
 
 def decode(input):
     keys = {}
     keys = get_key(input);
+    key_start = input.find("[")
+    key_end = input.rfind("]")
+    if(key_end == len(input)-1):
+        input = input[0:key_start];
+    else:
+        input = input[0:key_start] + input[key_end + 1:];
     output = ""
     paragraphs = input.split(" ")
     for val in paragraphs:

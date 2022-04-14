@@ -6,6 +6,7 @@ class node:
         self.left = left;
         self.right = right;
         self.code = "";
+
 def get_delim(ary):
     for tup in ary:
         if(tup[0] == "01"):
@@ -19,16 +20,12 @@ def encode_text(keys, text):
 
     return new_text;
 
-def make_key(ary, delim):
-    output = delim;
+def make_key(ary):
+    output = "[";
     for tup in ary:
-        if(tup[0] != "01"):
-            temp = format(ord(tup[0]),"b")
-            print(temp)
-            extra = "0" * (8-len(temp));
-            temp = extra + temp;
-            output += temp + delim + tup[1];
-    output += delim;
+        
+        output += tup[0] +  tup[1] + ",";
+    output = output + "]"
     return output;
         
 
@@ -110,7 +107,7 @@ def huffman(input):
     ary = [];
     get_codes(papa_node, ary)
     output = encode_text(ary, input)
-    return "Key: " + str(ary)[:-1] + " " + output + " Original size was " + str(8 * len(input)) + " bits New size is " + str(len(output)) + " bits";
+    return make_key(ary) + output + " Original size was " + str(8 * len(input)) + " bits New size is " + str(len(output)) + " bits";
 
     
 

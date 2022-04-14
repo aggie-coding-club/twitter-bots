@@ -22,7 +22,6 @@ text = myFile.read()
 used_IDs = []
 used_IDs = text.split(",")
 myFile.close()
-print(len("@bot90861498 Key: [[' ', '00'], ['m', '010'], ['s', '011'], [')', '1000'], [':', '1001'], ['e', '101'], ['p', '1100"))
 while(True):
    mentions = api.mentions_timeline()
    
