@@ -1,12 +1,13 @@
 import tweepy
 import time as time
-import Access_Keys as keys
 import huffman as huff
 import Decoder as decode
-consumer_key = keys.consumer_key
-consumer_secret = keys.consumer_secret
-access_token = keys.access_token
-access_token_secret = keys.access_token_secret
+from os import environ
+
+consumer_key = environ['CONSUMER_KEY']
+consumer_secret = environ['CONSUMER_SECRET']
+access_token = environ['ACCESS_TOKEN']
+access_token_secret = environ['ACCESS_TOKEN_SECRET']
 auth = tweepy.OAuth1UserHandler(
    consumer_key, consumer_secret, access_token, access_token_secret
 )
@@ -17,30 +18,26 @@ api = tweepy.API(auth)
 #for tweet in public_tweets:
 #    print(tweet.text)
 #api.update_status("Hello world!")
-myFile = open("used_IDs.txt")
-text = myFile.read()
+
 used_IDs = []
-used_IDs = text.split(",")
-myFile.close()
+for mention in api.mentions_timeline():
+   used_IDs.append(mention.id_str)
 while(True):
    mentions = api.mentions_timeline()
    
    for mention in mentions:
       statusID = mention.id
       if(not(mention.id_str in used_IDs) and str(mention.user.screen_name) != "bot90861498" and ("decode" in mention.text.lower())):
+         screen_name = "@" + str(mention.user.screen_name) + " ";
          try:
             status = api.get_status(statusID, tweet_mode = "extended")
             text = status.full_text.lower()
-            output = decode.decode(text)
+            output = screen_name + decode.decode(text)
             api.update_status(status = output, in_reply_to_status_id = mention.id)
          except:
-            api.update_status(status = "I wasn't able to decode your message :(", in_reply_to_status_id = mention.id);
+            api.update_status(status = screen_name + "I wasn't able to decode your message :(", in_reply_to_status_id = mention.id);
          used_IDs.append(mention.id_str)
-         myFile = open("used_IDs.txt", 'w')
-         for used_ID in used_IDs:
-            if(used_ID != ""):
-               myFile.write(used_ID + ",")
-         myFile.close()
+        
          time.sleep(15)
       if(not(mention.id_str in used_IDs) and str(mention.user.screen_name) != "bot90861498" and ("compress" in mention.text.lower())):
          status = api.get_status(statusID, tweet_mode = "extended")
@@ -67,21 +64,14 @@ while(True):
             tweets = api.user_timeline()
             api.update_status(status = curr_message, in_reply_to_status_id = tweets[0].id)
          used_IDs.append(mention.id_str)
-         myFile = open("used_IDs.txt", 'w')
-         for used_ID in used_IDs:
-            if(used_ID != ""):
-               myFile.write(used_ID + ",")
-         myFile.close()
+         
          time.sleep(15)
       if(not(mention.id_str in used_IDs) and str(mention.user.screen_name) != "bot90861498" and ("time" in mention.text)):
          text = "@" + str(mention.user.screen_name) + " Hello! it is " + str(time.gmtime().tm_mon) + "/" + str(time.gmtime().tm_mday) + "/" + str(time.gmtime().tm_year) + " " + str(time.gmtime().tm_hour) + ":" + str(time.gmtime().tm_min) + ":" + str(time.gmtime().tm_sec) + " UTC"
          api.update_status(status = text, in_reply_to_status_id = mention.id)
          used_IDs.append(mention.id_str)
-         myFile = open("used_IDs.txt", 'w')
-         for used_ID in used_IDs:
-            if(used_ID != ""):
-               myFile.write(used_ID + ",")
-         myFile.close()
+         
+         
          time.sleep(15)
    time.sleep(60)
 
