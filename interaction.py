@@ -7,5 +7,8 @@ def giveMethodOptions():
     bot.API.update_status(message)
 
 # check options
-# def checkForOption(userReply):
-    
+# def checkForMethod(userReply):
+#     for char in userReply:
+#         if char == "1":
+           
+#         else if char == "2":
