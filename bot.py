@@ -60,6 +60,14 @@ def main():
     while(True):
         current_mentions = get_mentions()
         newest_mentions = new_mentions(old_mention_ids, current_mentions)
+        for mention in new_mentions:
+            recommended = method_keywords.keywords(mention)
+            text = "@" + mention.user.screen_name 
+            if(recommended != ""):
+                text += " We recommend these bots: " + recommended
+            else:
+                text += " Here is a randomly recommended bot: " + method_random.random()
+            API.update_status(text = text, in_reply_to_status_id = mention.id)
         time.sleep(60)
 
 main()
