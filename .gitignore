@@ -133,3 +133,4 @@ dmypy.json
 
 # credentials
 credentials.py
+keys.py

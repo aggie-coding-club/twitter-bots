@@ -6,11 +6,11 @@ import interaction
 import method_keywords
 import method_quiz
 import method_random
-
-consumer_key = ...
-consumer_secret = ...
-access_token = ...
-access_token_secret = ...
+import keys
+consumer_key = keys.CONSUMER_KEY
+consumer_secret = keys.CONSUMER_SECRET
+access_token = keys.ACCESS_TOKEN
+access_token_secret = keys.ACCESS_TOKEN_SECRET
 
 auth = tweepy.OAuth1UserHandler(
    consumer_key, consumer_secret, access_token, access_token_secret
