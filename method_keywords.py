@@ -1,6 +1,6 @@
 import tweepy
 #returns list of bots to recommend based on keywords
-def keywords(status, api):
+def keywords(status):
     output = ""
     keywords = {"democracy": "@sheevsdemocracy", "compress" : "@bot90861498", "compression"  : "@bot90861498", "stanley" : "@twt_stanley", "flat" : "@twt_stanley", "manipulate" : "@textmanipulator"}
     text = status.text
