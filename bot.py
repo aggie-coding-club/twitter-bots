@@ -16,7 +16,7 @@ auth = tweepy.OAuth1UserHandler(
    consumer_key, consumer_secret, access_token, access_token_secret
 )
 API = tweepy.API(auth)
-BOT_LIST = ["textmanipulator", "bot90861498", "sheevsdemocracy", "Nitsuabot"]
+BOT_LIST = ["textmanipulator", "bot90861498", "sheevsdemocracy", "Nitsuabot", "twt_stanley"]
 
 #returns a list of status objects representing all of the mentions in the current timeline
 def get_mentions():
