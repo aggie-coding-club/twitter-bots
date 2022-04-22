@@ -39,11 +39,6 @@ def new_mentions(old_mention_ids, current_mentions):
         if(not mention.id_str in old_mentions):
             new_mentions.append(mention)
     return new_mentions
-
-#returns the username of the chosen bot
-def pick_random_bot():
-    return ""
-
 #returns the text for the quiz
 def quiz_text():
     return ""
