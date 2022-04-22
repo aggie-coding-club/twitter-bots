@@ -1,6 +1,12 @@
 import tweepy
 import time as time
 
+# import in the other functions
+import interaction
+import method_keywords
+import method_quiz
+import method_random
+
 consumer_key = ...
 consumer_secret = ...
 access_token = ...
